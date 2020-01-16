@@ -1,0 +1,11 @@
+<label for="typeHead">Search Category:</label>
+<input type="text" [ngModel]="searchTerm" (ngModelChange)="radiNesto($event)" />
+
+<div *ngIf="isLoading; else showResults">Searching in database..</div>
+
+<ng-template #showResults>
+  <ul>
+    <li *ngFor="let category of foundCategories">{{ category.categoryName }}</li>
+    <li *ngIf="showAddNew" (click)="onAddCategory()">Add new category called {{ searchTerm }}</li>
+  </ul>
+</ng-template>
